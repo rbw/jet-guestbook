@@ -7,8 +7,6 @@ __jetpack__ = Jetpack(
     controller=controller,
     services=services,
     models=models,
-    meta={
-        'name': 'guestbook',
-        'description': 'Example Guestbook Package',
-    }
+    name='guestbook',
+    description='Example guestbook package'
 )
