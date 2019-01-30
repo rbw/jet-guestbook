@@ -3,6 +3,8 @@
 from jetfactory import Jetpack
 from .app import controller, models, services
 
+__version__ = '0.1.0'
+
 __jetpack__ = Jetpack(
     controller=controller,
     services=services,
