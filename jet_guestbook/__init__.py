@@ -3,7 +3,7 @@
 from jetfactory import Jetpack
 from .app import controller, models, services
 
-pkg = Jetpack(
+__jetpack__ = Jetpack(
     controller=controller,
     services=services,
     models=models,
