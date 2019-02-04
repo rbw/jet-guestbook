@@ -5,7 +5,7 @@ from .app import controller, models, services
 
 __version__ = '0.1.0'
 
-APP = Jetpack(
+pkg = Jetpack(
     controller=controller,
     services=services,
     models=models,
