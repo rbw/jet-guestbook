@@ -8,8 +8,13 @@ twine = "*"
 pytest = '*'
 
 [packages]
-jetfactory = '*'
+jetfactory = '>=0.1.0'
+marshmallow = '>=3.0.0rc3'
 maxminddb-geolite2 = '*'
 
 [requires]
 python_version = '3.6'
+
+[pipenv]
+allow_prereleases = true
+

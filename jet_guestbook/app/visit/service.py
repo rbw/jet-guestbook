@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from jetfactory.service import DatabaseService
+from jetfactory.service import DatabaseClientMixin
 from jetfactory.exceptions import JetfactoryException
 from .models import VisitModel
 from ..visitor import svc_visitor
 
 
-class VisitService(DatabaseService):
+class VisitService(DatabaseClientMixin):
     __model__ = VisitModel
     VISITS_MAX = 10
 

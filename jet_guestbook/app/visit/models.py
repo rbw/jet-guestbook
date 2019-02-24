@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime
-from peewee import Model, ForeignKeyField, CharField, DateTimeField
+from jetfactory.db import Model, ForeignKeyField, CharField, DateTimeField
 from ..visitor import VisitorModel
 
 

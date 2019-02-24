@@ -2,11 +2,12 @@
 
 from geolite2 import geolite2
 
-from jetfactory.service import DatabaseService
+from jetfactory.service import DatabaseClientMixin
 from .models import VisitorModel
 
 
-class VisitorService(DatabaseService):
+class VisitorService(DatabaseClientMixin):
+    __apiname__ = 'visitor'
     __model__ = VisitorModel
 
     def __init__(self):

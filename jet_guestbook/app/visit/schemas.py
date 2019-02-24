@@ -1,53 +1,21 @@
 # -*- coding: utf-8 -*-
 
-from marshmallow import Schema, fields
-from jetfactory.controller import schemas
-from ..visitor.schemas import VisitorSchema
-from .._common import _VisitPath
+from jetfactory.schema import fields, Schema
+from ..visitor.schemas import Visitor
 
 
-class VisitSchema(Schema):
+class Visit(Schema):
     id = fields.Integer()
-    visitor = fields.Nested(VisitorSchema)
+    visitor = fields.Nested(Visitor)
     visited_on = fields.String(attribute='created_on')
     message = fields.String()
+    name = fields.String()
 
     class Meta:
         dump_only = ['id', 'visitor', 'visited_on']
         load_only = ['visit_id', 'visitor_id']
 
 
-class _VisitCreateSchema(VisitSchema):
+class VisitNew(Schema):
     message = fields.String(required=True)
     name = fields.String(required=True)
-
-
-class Visit(Schema):
-    path = fields.Nested(_VisitPath)
-    response = fields.Nested(VisitSchema)
-
-
-class Visits(Schema):
-    query = fields.Nested(schemas.QueryParams)
-    response = fields.List(fields.Nested(VisitSchema))
-
-
-class VisitCount(Schema):
-    response = fields.Nested(schemas.Count)
-
-
-class VisitUpdate(Schema):
-    path = fields.Nested(_VisitPath)
-    body = fields.Nested(VisitSchema)
-    response = fields.Nested(VisitSchema)
-
-
-class VisitDelete(Schema):
-    path = fields.Nested(_VisitPath)
-    response = fields.Nested(schemas.Delete)
-
-
-class VisitCreate(Schema):
-    """Create a new guestbook entry"""
-    body = fields.Nested(_VisitCreateSchema)
-    response = fields.Nested(VisitSchema)
