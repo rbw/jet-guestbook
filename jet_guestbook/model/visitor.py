@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from jetfactory.db import Model, CharField
+from peewee import Model, CharField
 
 
 class VisitorModel(Model):

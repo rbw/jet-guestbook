@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from jetfactory.schema import fields, Schema
-from ..visitor.schemas import Visitor
+from .visitor import Visitor
 
 
 class Visit(Schema):

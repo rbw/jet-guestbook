@@ -1,14 +1,18 @@
 # -*- coding: utf-8 -*-
 
-from jetfactory.service import DatabaseClientMixin
+from jetfactory.service import DatabaseService
 from jetfactory.exceptions import JetfactoryException
-from .models import VisitModel
-from ..visitor import svc_visitor
+
+from jet_guestbook.model import VisitModel
+from .visitor import VisitorService
 
 
-class VisitService(DatabaseClientMixin):
+class VisitService(DatabaseService):
     __model__ = VisitModel
     VISITS_MAX = 10
+
+    def __init__(self):
+        self.visitor = VisitorService()
 
     async def get_authored(self, visit_id, remote_addr):
         visit = await self.get_by_pk(visit_id)
@@ -35,14 +39,14 @@ class VisitService(DatabaseClientMixin):
             raise JetfactoryException(f'Max {self.VISITS_MAX} entries per IP. Try deleting some old ones.', 400)
 
         async with self.db_manager.transaction():
-            city, country = await svc_visitor.ipaddr_location(remote_addr)
+            city, country = await self.visitor.ipaddr_location(remote_addr)
             visitor = dict(
                 name=visit_new.pop('name'),
                 ip_addr=remote_addr,
                 location=f'{city}, {country}'
             )
 
-            visit_new['visitor'], created = await svc_visitor.get_or_create(visitor)
+            visit_new['visitor'], created = await self.visitor.get_or_create(visitor)
             if created:
                 self.log.info(f"New visitor: {visit_new['visitor'].name}")
 

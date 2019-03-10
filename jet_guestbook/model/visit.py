@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime
-from jetfactory.db import Model, ForeignKeyField, CharField, DateTimeField
-from ..visitor import VisitorModel
+from peewee import Model, ForeignKeyField, CharField, DateTimeField
+from .visitor import VisitorModel
 
 
 class VisitModel(Model):
