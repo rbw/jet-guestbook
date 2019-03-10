@@ -9,6 +9,7 @@ pytest = '*'
 
 [packages]
 jetfactory = '>=0.1.0'
+peewee = '>=3.8.1'
 marshmallow = '>=3.0.0rc3'
 maxminddb-geolite2 = '*'
 
