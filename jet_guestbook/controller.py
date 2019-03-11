@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from jetfactory.controller import ControllerBase, Injector, route, input_load, output_dump
+from jetfactory.controller import BaseController, Injector, route, input_load, output_dump
 from jetfactory.schema import ParamsSchema, DeleteSchema, CountSchema
 from jet_guestbook.schema import Visit, Visitor, VisitNew
 from .service import VisitService, VisitorService
 
 
-class Controller(ControllerBase):
+class Controller(BaseController):
     def __init__(self):
         self.visit = VisitService()
         self.visitor = VisitorService()
