@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from jetfactory.schema import fields, Schema
-from .visitor import Visitor
+
+
+class Visitor(Schema):
+    id = fields.Integer()
+    name = fields.String()
+    location = fields.String()
 
 
 class Visit(Schema):
@@ -16,6 +21,6 @@ class Visit(Schema):
         load_only = ['visit_id', 'visitor_id']
 
 
-class VisitNew(Schema):
+class VisitNew(Visit):
     message = fields.String(required=True)
     name = fields.String(required=True)
